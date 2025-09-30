@@ -1,0 +1,11 @@
+referenceid,country,product_code,product_name,subscription_start_date,subscription_deactivation_date,subscription_duration_months,order_date_kyiv,return_date_kyiv,last_revill_date_kyiv,has_chargeback,has_refund,sales_agent_name,source,campaign_name,total_amount,discount_amount,number_of_rebills,original_amount,returned_amount,total_rebill_amount
+REF001,Ukraine,PROD001,Premium Subscription,2024-01-15,2024-12-15,12,2024-01-15 10:30:00,,2024-02-15 10:30:00,false,false,John Smith,chat,Winter Campaign,95.00,5.00,1,100.00,0.00,95.00
+REF002,Poland,PROD002,Basic Plan,2024-01-20,2024-07-20,6,2024-01-20 14:45:00,2024-03-15 09:20:00,2024-02-20 14:45:00,false,true,Jane Doe,call,Spring Promo,45.00,5.00,1,50.00,45.00,45.00
+REF003,Germany,PROD001,Premium Subscription,2024-02-01,2024-02-01,1,2024-02-01 09:15:00,,2024-03-01 09:15:00,true,false,John Smith,chat,Winter Campaign,190.00,10.00,2,200.00,190.00,190.00
+REF004,France,PROD003,Enterprise Plan,2024-02-10,2024-08-10,6,2024-02-10 16:30:00,,2024-03-10 16:30:00,false,false,Mike Johnson,call,Enterprise Campaign,285.00,15.00,1,300.00,0.00,285.00
+REF005,Ukraine,PROD002,Basic Plan,2024-02-15,2024-05-15,3,2024-02-15 11:00:00,,2024-03-15 11:00:00,false,false,Jane Doe,chat,Basic Offer,38.00,12.00,1,50.00,0.00,38.00
+REF006,Spain,PROD001,Premium Subscription,2024-03-01,2024-09-01,6,2024-03-01 13:20:00,,2024-04-01 13:20:00,false,false,Sarah Wilson,call,Premium March,180.00,20.00,3,200.00,0.00,540.00
+REF007,Italy,PROD002,Basic Plan,2024-03-05,2024-03-05,1,2024-03-05 08:45:00,2024-03-20 10:15:00,,false,true,Mike Johnson,chat,Quick Sale,25.00,25.00,0,50.00,25.00,0.00
+REF008,Netherlands,PROD003,Enterprise Plan,2024-03-10,2024-09-10,6,2024-03-10 15:10:00,,,false,false,John Smith,call,Enterprise Campaign,570.00,30.00,4,600.00,0.00,1140.00
+REF009,,PROD001,Premium Subscription,2024-03-15,2024-12-15,9,2024-03-15 12:30:00,,,false,false,,chat,,150.00,50.00,2,200.00,0.00,300.00
+REF010,Belgium,PROD002,,2024-03-20,2024-06-20,3,2024-03-20 10:00:00,,,false,false,Sarah Wilson,call,Spring Campaign,60.00,40.00,1,100.00,0.00,60.00
