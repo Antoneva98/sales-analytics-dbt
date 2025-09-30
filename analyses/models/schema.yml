@@ -1,0 +1,134 @@
+version: 2
+
+sources:
+  - name: seeds
+    description: "Seed data for sales analytics"
+    tables:
+      - name: sales_data_seed
+        description: "Raw sales data from CSV"
+
+models:
+  - name: raw_sales_data
+    description: "Staging table for raw sales data"
+    columns:
+      - name: referenceid
+        description: "Unique identifier for each sale"
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_sales
+    description: "Fact table containing processed sales data with revenue calculations"
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('raw_sales_data')
+    columns:
+      - name: referenceid
+        description: "Unique identifier for each sale"
+        tests:
+          - not_null
+          - unique
+      
+      - name: product_name
+        description: "Name of the sold product"
+        tests:
+          - not_null
+      
+      - name: sales_agents_list
+        description: "Comma-separated list of sales agents involved in the sale"
+        tests:
+          - not_null
+      
+      - name: country
+        description: "Country of the buyer"
+        tests:
+          - not_null
+      
+      - name: campaign_name
+        description: "Marketing campaign name"
+        tests:
+          - not_null
+      
+      - name: source
+        description: "Source of the sale (chat or call)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['chat', 'call', 'N/A']
+      
+      - name: company_revenue_from_sale
+        description: "Total company revenue from the sale including rebills minus returns"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 OR company_revenue_from_sale IS NULL"
+      
+      - name: rebill_revenue
+        description: "Revenue from rebills only"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      
+      - name: number_of_rebills
+        description: "Number of rebills for this sale"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      
+      - name: discount_amount
+        description: "Discount amount applied"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      
+      - name: returned_amount
+        description: "Amount returned to customer"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      
+      - name: order_date_kyiv
+        description: "Order date in Kyiv timezone"
+        tests:
+          - not_null
+      
+      - name: order_date_utc
+        description: "Order date in UTC timezone"
+        tests:
+          - not_null
+      
+      - name: order_date_new_york
+        description: "Order date in New York timezone"
+        tests:
+          - not_null
+
+seeds:
+  - name: sales_data_seed
+    description: "Raw sales data loaded from CSV"
+    config:
+      column_types:
+        referenceid: varchar(50)
+        country: varchar(100)
+        product_code: varchar(50)
+        product_name: varchar(200)
+        subscription_start_date: date
+        subscription_deactivation_date: date
+        subscription_duration_months: integer
+        order_date_kyiv: timestamp
+        return_date_kyiv: timestamp
+        last_revill_date_kyiv: timestamp
+        has_chargeback: boolean
+        has_refund: boolean
+        sales_agent_name: varchar(100)
+        source: varchar(20)
+        campaign_name: varchar(200)
+        total_amount: decimal(10,2)
+        discount_amount: decimal(10,2)
+        number_of_rebills: integer
+        original_amount: decimal(10,2)
+        returned_amount: decimal(10,2)
+        total_rebill_amount: decimal(10,2)
