@@ -1,21 +1,21 @@
 Структура проєкту
 
-sales_analytics/
-├── dbt_project.yml          # Конфігурація проекту
-├── packages.yml             # Залежності dbt
-├── README.md               # Документація
-├── analyses/               # Аналітичні запити
-│   ├── monthly_revenue_growth.sql
-│   ├── agent_performance_ranking.sql
-│   └── agents_above_average_discount.sql
-├── models/                 # Моделі даних
-│   ├── schema.yml         # Опис моделей та тести
-│   ├── staging/
-│   │   └── raw_sales_data.sql
-│   └── marts/
-│       └── fct_sales.sql
-└── seeds/                  # Тестові дані
-    └── sales_data_seed.csv
+sales_analytics/    
+├── dbt_project.yml          # Конфігурація проекту    
+├── packages.yml             # Залежності dbt    
+├── README.md               # Документація    
+├── analyses/               # Аналітичні запити    
+│   ├── monthly_revenue_growth.sql    
+│   ├── agent_performance_ranking.sql    
+│   └── agents_above_average_discount.sql    
+├── models/                 # Моделі даних    
+│   ├── schema.yml         # Опис моделей та тести    
+│   ├── staging/    
+│   │   └── raw_sales_data.sql    
+│   └── marts/    
+│       └── fct_sales.sql    
+└── seeds/                  # Тестові дані    
+    └── sales_data_seed.csv    
 
     Опис вітрини даних fct_sales
 Таблиця fct_sales містить наступні поля:
